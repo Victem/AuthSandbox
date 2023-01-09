@@ -1,0 +1,41 @@
+﻿@hostname = localhost
+@port = 5000
+@host = {{hostname}}:{{port}}
+@contentType = application/json
+
+
+# Order get
+GET http://{{host}}/test/shipment/100?wtf=1&stop=hello
+
+# Login user
+POST http://{{host}}/login
+Content-Type:{{contentType}}
+
+{
+	"Name": "test-api-user",
+	"Password" : "Password-123!"
+}
+
+# Order create
+POST http://{{host}}/shipment
+Content-Type:{{contentType}}
+
+{
+	"id": 10,
+	"Name" : "Product",
+	"description": "Test",
+	"sessionId": "BEEE410A-336F-493A-9CF1-88EDB019083B"
+}
+
+#Order update
+PUT http://{{host}}/shipment
+Content-Type:{{contentType}}
+
+{
+	"id": 1,
+	"Name" : "Product",
+	"Description": "Test"
+}
+
+#Order delete
+DELETE http://{{host}}/shipment/100

@@ -1,0 +1,29 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/login",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "5100"
+        }
+      ],
+      "UpstreamPathTemplate": "/login",
+      "UpstreamHttpMethod": [ "POST" ],
+      "DelegatingHandlers": [ "AuthenticationHandler" ]
+    },
+    {
+      "DownstreamPathTemplate": "/{url}",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "5100"
+        }
+      ],
+      "UpstreamPathTemplate": "/{url}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+      "DelegatingHandlers": [ "AuthorizationHandler" ]
+    }
+  ]
+  
+}

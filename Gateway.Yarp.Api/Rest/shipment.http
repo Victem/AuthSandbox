@@ -1,0 +1,32 @@
+﻿@hostname = localhost
+@port = 5000
+@host = {{hostname}}:{{port}}
+@contentType = application/json
+
+
+# Order get
+GET http://{{host}}/test/shipment/100?wtf=1&stop=hello
+
+
+# Order create
+POST http://{{host}}/shipment
+Content-Type:{{contentType}}
+
+{
+	"id": 10,
+	"Name" : "Product",
+	"Description": "Test"
+}
+
+#Order update
+PUT http://{{host}}/shipment
+Content-Type:{{contentType}}
+
+{
+	"id": 1,
+	"Name" : "Product",
+	"Description": "Test"
+}
+
+#Order delete
+DELETE http://{{host}}/shipment/100
